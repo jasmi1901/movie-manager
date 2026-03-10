@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import ItemForm from "./components/ItemForm";
+import ItemList from "./components/ItemList";
+import Footer from "./components/Footer";
 
 function App() {
+
+  const [movies, setMovies] = useState([]);
+  const [editingMovie, setEditingMovie] = useState(null);
+
+  const addMovie = (movie) => {
+    const newMovie = { ...movie, id: Date.now() };
+    setMovies([...movies, newMovie]);
+  };
+
+  const deleteMovie = (id) => {
+    setMovies(movies.filter(movie => movie.id !== id));
+  };
+
+  const startEdit = (movie) => {
+    setEditingMovie(movie);
+  };
+
+  const updateMovie = (updatedMovie) => {
+    setMovies(
+      movies.map(movie =>
+        movie.id === updatedMovie.id ? updatedMovie : movie
+      )
+    );
+    setEditingMovie(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+    <div className="container">
+
+      <Header />
+
+      <ItemForm
+        addMovie={addMovie}
+        editingMovie={editingMovie}
+        updateMovie={updateMovie}
+      />
+
+      <ItemList
+        movies={movies}
+        deleteMovie={deleteMovie}
+        startEdit={startEdit}
+      />
+
+    </div>
+
+    <Footer /> 
     </div>
   );
 }

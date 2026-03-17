@@ -3,19 +3,19 @@
  Manage your favorite movies with ease! Add, edit, and delete movies dynamically. This app is built using React and demonstrates core React concepts like state management, props, and component-based architecture.
 
  ## Features
-   Add new movies with title, genre, and year
+   * Add new movies with title, genre, and year
 
-   Edit existing movies
+   * Edit existing movies
 
-   Delete movies
+   * Delete movies
 
-   Responsive and colorful UI with cards and genre badges
+   * Responsive and colorful UI with cards and genre badges
 
-   Genre dropdown includes Tamil and other popular movie genres
+   * Genre dropdown includes Tamil and other popular movie genres
 
-   Smooth hover animations and interactive buttons
+   * Smooth hover animations and interactive buttons
 
-   Footer with app info
+   * Footer with app info
 
 # Getting Started (Local Setup)
 ## Prerequisites
@@ -25,23 +25,21 @@
 ## Clone the Repository 
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/movie-manager.git
+git clone https://github.com/jasmi1901/movie-manager.git
 cd movie-manager
 ```
 
-# Install Dependencies
+## Install Dependencies
 
 ```bash
 npm install
 ```
-# Start the App
+## Start the App
 
 ```bash
  npm start
 ```
- Open your browser at http://localhost:3000
- The app will automatically reload on code changes
-
+ 
 # Folder Structure
 
 ```bash
@@ -59,10 +57,10 @@ npm install
 ```
 
 # Tech Stack
-  React
-  JSX & CSS
-  ES6+ JavaScript
-  Git & GitHub
+  * React
+  * JSX & CSS
+  * ES6+ JavaScript
+  * Git & GitHub
 
 # Live Demo
-
+ http://localhost:3000

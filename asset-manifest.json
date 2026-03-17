@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/jasmi1901.github.io/movie-manager.git/static/css/main.e0e7dd03.css",
-    "main.js": "/jasmi1901.github.io/movie-manager.git/static/js/main.897fb814.js",
-    "index.html": "/jasmi1901.github.io/movie-manager.git/index.html",
-    "main.e0e7dd03.css.map": "/jasmi1901.github.io/movie-manager.git/static/css/main.e0e7dd03.css.map",
-    "main.897fb814.js.map": "/jasmi1901.github.io/movie-manager.git/static/js/main.897fb814.js.map"
+    "main.css": "/movie-manager.git/static/css/main.e0e7dd03.css",
+    "main.js": "/movie-manager.git/static/js/main.897fb814.js",
+    "index.html": "/movie-manager.git/index.html",
+    "main.e0e7dd03.css.map": "/movie-manager.git/static/css/main.e0e7dd03.css.map",
+    "main.897fb814.js.map": "/movie-manager.git/static/js/main.897fb814.js.map"
   },
   "entrypoints": [
     "static/css/main.e0e7dd03.css",

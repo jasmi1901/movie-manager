@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #ffecd2, #fcb69f); /* soft gradient */
+  background: linear-gradient(to right, #ffecd2, #fcb69f); 
   margin: 0;
   padding: 0;
 }
@@ -11,7 +11,7 @@ body {
   max-width: 800px;
   margin: 30px auto;
   padding: 20px;
-  background: #ffffffcc; /* slightly transparent white */
+  background: #ffffffcc; 
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
@@ -152,9 +152,9 @@ header p {
 }
 
 .card:hover {
-  transform: translateY(-7px) scale(1.02); /* slightly bigger on hover */
+  transform: translateY(-7px) scale(1.02); 
   box-shadow: 0 15px 25px rgba(0,0,0,0.3);
-  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* slight gradient shift */
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); 
 }
 
 .footer {
@@ -190,4 +190,29 @@ header p {
 
 .container {
   flex: 1;
+}
+
+.message {
+  text-align: center;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  animation: fadeIn 0.5s ease;
+}
+.message.add {
+  background: #4caf50; 
+}
+.message.delete {
+  background: #cd8984; 
+}
+.message.update {
+  background: #2196f3; 
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -4,6 +4,7 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
+  
 
   useEffect(() => {
     if (editingMovie) {
@@ -25,15 +26,18 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
 
     if (editingMovie) {
       updateMovie({ ...movieData, id: editingMovie.id });
+      
     } else {
       addMovie(movieData);
+      
     }
 
     setTitle("");
     setGenre("");
     setYear("");
+   
   };
-
+  
   return (
     <form onSubmit={handleSubmit} className="form">
       <input
@@ -51,12 +55,11 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
         <option value="Romance">Romance</option>
         <option value="Thriller">Thriller</option>
         <option value="Horror">Horror</option>
+        <option value="Adventure">Adventure</option>
         <option value="Sci-Fi">Sci-Fi</option>
         <option value="Historical">Historical</option>
         <option value="Musical">Musical</option>
-        <option value="Tamil Action">Tamil Action</option>
-        <option value="Tamil Drama">Tamil Drama</option>
-        <option value="Tamil Romance">Tamil Romance</option>
+        
       </select>
 
       <input

@@ -1,6 +1,6 @@
 import React from "react";
 
-// Assign colors for different genres
+
 const genreColors = {
   Action: "#f44336",
   Drama: "#2196f3",
@@ -8,12 +8,11 @@ const genreColors = {
   Romance: "#e91e63",
   Thriller: "#9c27b0",
   Horror: "#607d8b",
+  Adventure: "#4caf50",
   "Sci-Fi": "#00bcd4",
   Historical: "#795548",
   Musical: "#ff5722",
-  "Tamil Action": "#d32f2f",
-  "Tamil Drama": "#1976d2",
-  "Tamil Romance": "#c2185b",
+  
 };
 
 function ItemCard({ movie, deleteMovie, startEdit }) {

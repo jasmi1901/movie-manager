@@ -5,37 +5,58 @@ import ItemList from "./components/ItemList";
 import Footer from "./components/Footer";
 
 function App() {
-
   const [movies, setMovies] = useState([]);
   const [editingMovie, setEditingMovie] = useState(null);
-
+  const [message, setMessage] = useState("");       
+  const [messageType, setMessageType] = useState("");
+  
+  
   const addMovie = (movie) => {
     const newMovie = { ...movie, id: Date.now() };
     setMovies([...movies, newMovie]);
+    showMessage(`✅ "${movie.title}" added successfully!`, "add");
   };
 
+  
   const deleteMovie = (id) => {
-    setMovies(movies.filter(movie => movie.id !== id));
+    const movie = movies.find((m) => m.id === id); 
+    if (!movie) return;
+    setMovies(movies.filter((m) => m.id !== id));
+    showMessage(`❌ "${movie.title}" deleted.`, "delete");
   };
 
+  
   const startEdit = (movie) => {
     setEditingMovie(movie);
   };
 
+  
   const updateMovie = (updatedMovie) => {
     setMovies(
-      movies.map(movie =>
+      movies.map((movie) =>
         movie.id === updatedMovie.id ? updatedMovie : movie
       )
     );
     setEditingMovie(null);
+    showMessage(`✏️ "${updatedMovie.title}" updated successfully!`, "update");
+  };
+
+  
+  const showMessage = (text, type) => {
+    setMessage(text);
+    setMessageType(type);
+    setTimeout(() => {
+      setMessage("");
+      setMessageType("");
+    }, 3000);
   };
 
   return (
     <div className="container">
-    <div className="container">
-
       <Header />
+
+      
+      {message && <p className={`message ${messageType}`}>{message}</p>}
 
       <ItemForm
         addMovie={addMovie}
@@ -49,9 +70,7 @@ function App() {
         startEdit={startEdit}
       />
 
-    </div>
-
-    <Footer /> 
+      <Footer />
     </div>
   );
 }

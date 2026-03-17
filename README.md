@@ -63,4 +63,4 @@ npm install
   * Git & GitHub
 
 # Live Demo
- http://localhost:3000
+ http://localhost:3000/jasmi1901/movie-manager.git

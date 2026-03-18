@@ -21,6 +21,10 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
       alert("Please fill all fields");
       return;
     }
+    if (year < 1888 || year > new Date().getFullYear()) {
+    alert("Enter a valid movie year");
+    return;
+}
 
     const movieData = { title, genre, year };
 

@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const genreColors = {
   Action: "#f44336",
   Drama: "#2196f3",
@@ -12,20 +11,16 @@ const genreColors = {
   "Sci-Fi": "#00bcd4",
   Historical: "#795548",
   Musical: "#ff5722",
-  
 };
 
-function ItemCard({ movie, deleteMovie, startEdit }) {
+function ItemCard({ movie, deleteMovie, startEdit, layout }) {
   const badgeColor = genreColors[movie.genre] || "#333";
 
   return (
-    <div className="card">
+    <div className={`card ${layout === "list" ? "list-card" : ""}`}>
       <h3>{movie.title}</h3>
       <p>
-        <span
-          className="genre-badge"
-          style={{ backgroundColor: badgeColor }}
-        >
+        <span className="genre-badge" style={{ backgroundColor: badgeColor }}>
           {movie.genre}
         </span>
       </p>

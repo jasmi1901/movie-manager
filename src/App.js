@@ -9,7 +9,7 @@ function App() {
   const [editingMovie, setEditingMovie] = useState(null);
   const [message, setMessage] = useState("");       
   const [messageType, setMessageType] = useState("");
-  
+  const [layout, setLayout] = useState("grid");
   
   const addMovie = (movie) => {
     const newMovie = { ...movie, id: Date.now() };
@@ -54,6 +54,24 @@ function App() {
   return (
     <div className="container">
       <Header />
+    
+    
+    <div className="top-bar">
+    <div className="layout-toggle">
+    <button
+      onClick={() => setLayout("grid")}
+      className={layout === "grid" ? "active" : ""}
+    >
+     📊 
+    </button>
+    <button
+      onClick={() => setLayout("list")}
+      className={layout === "list" ? "active" : ""}
+    >
+      📋 
+    </button>
+    </div>
+    </div>
 
       
       {message && <p className={`message ${messageType}`}>{message}</p>}
@@ -68,6 +86,7 @@ function App() {
         movies={movies}
         deleteMovie={deleteMovie}
         startEdit={startEdit}
+        layout={layout}
       />
 
       <Footer />

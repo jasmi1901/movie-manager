@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 
-const API_KEY = "b92fa8bc"; 
+const API_KEY = "b92fa8bc";
 
-function ItemForm({ addMovie, editingMovie, updateMovie }) {
+const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  
+
+
+
+  // 🟡 Fill form when editing
   useEffect(() => {
     if (editingMovie) {
       setTitle(editingMovie.title);
@@ -19,7 +22,7 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
     }
   }, [editingMovie]);
 
-  
+  // 🟡 Auto fetch poster from OMDB
   useEffect(() => {
     if (!title) return;
 
@@ -35,9 +38,9 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
 
           if (data.Response === "True" && data.Poster && data.Poster !== "N/A") {
             setImage(data.Poster);
-            if (!year) setYear(data.Year); 
+            if (!year) setYear(data.Year);
           } else {
-            setImage(""); 
+            setImage("");
           }
         } catch (err) {
           console.error("Error fetching movie:", err);
@@ -47,22 +50,17 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
       };
 
       fetchMovieImage();
-    }, 600); 
+    }, 600);
 
     return () => clearTimeout(delay);
   }, [title, year]);
 
- 
+  // 🟢 Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title || !genre || !year) {
       alert("Please fill all fields");
-      return;
-    }
-
-    if (year < 1888 || year > new Date().getFullYear()) {
-      alert("Enter a valid movie year");
       return;
     }
 
@@ -74,7 +72,7 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
       addMovie(movieData);
     }
 
-    // Reset form
+    // reset form
     setTitle("");
     setGenre("");
     setYear("");
@@ -82,7 +80,8 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form ref={ref} onSubmit={handleSubmit} className="form">
+      
       <input
         type="text"
         placeholder="Movie Title"
@@ -111,14 +110,14 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
         onChange={(e) => setYear(e.target.value)}
       />
 
-      
+      {/* Poster Preview */}
       {loading ? (
-        <p>Loading poster...</p>
+        <p className="loading">Loading poster...</p>
       ) : image ? (
         <img
           src={image}
           alt="Movie Poster"
-          
+          className="preview-img"
         />
       ) : null}
 
@@ -127,6 +126,6 @@ function ItemForm({ addMovie, editingMovie, updateMovie }) {
       </button>
     </form>
   );
-}
+});
 
 export default ItemForm;

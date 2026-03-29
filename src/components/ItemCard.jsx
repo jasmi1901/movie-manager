@@ -13,14 +13,19 @@ const genreColors = {
   Musical: "#ff5722",
 };
 
-function ItemCard({ movie, deleteMovie, startEdit, layout }) {
-  const badgeColor = genreColors[movie.genre] || "#333";
 
+
+function ItemCard({ movie, deleteMovie, startEdit, layout }) {
+  
+  const badgeColor = genreColors[movie.genre] || "#333";
+  
   return (
     <div className={`card ${layout === "list" ? "list-card" : ""}`}>
+      
+      {/* LIST VIEW */}
       {layout === "list" ? (
         <div className="list-card-inner">
-          {/* Image on the left */}
+          
           <img
             src={movie.image || "https://via.placeholder.com/120x160?text=No+Image"}
             alt={movie.title}
@@ -35,21 +40,29 @@ function ItemCard({ movie, deleteMovie, startEdit, layout }) {
 
           <div className="list-card-info">
             <h3>{movie.title}</h3>
+
             <p>
-              <span className="genre-badge" style={{ backgroundColor: badgeColor }}>
+              <span
+                className="genre-badge"
+                style={{ backgroundColor: badgeColor }}
+              >
                 {movie.genre}
               </span>
             </p>
+
             <p>Year: {movie.year}</p>
+
             <div className="buttons">
               <button onClick={() => startEdit(movie)}>Edit</button>
-              <button onClick={() => deleteMovie(movie.id)}>Delete</button>
+              <button onClick={(e) => deleteMovie(movie.id,e)}>
+                Delete
+              </button>
             </div>
           </div>
         </div>
       ) : (
         <>
-          
+          {/* GRID VIEW */}
           <img
             src={movie.image || "https://via.placeholder.com/220x300?text=No+Image"}
             alt={movie.title}
@@ -60,16 +73,25 @@ function ItemCard({ movie, deleteMovie, startEdit, layout }) {
               objectFit: "cover",
             }}
           />
+
           <h3>{movie.title}</h3>
+
           <p>
-            <span className="genre-badge" style={{ backgroundColor: badgeColor }}>
+            <span
+              className="genre-badge"
+              style={{ backgroundColor: badgeColor }}
+            >
               {movie.genre}
             </span>
           </p>
+
           <p>Year: {movie.year}</p>
+
           <div className="buttons">
             <button onClick={() => startEdit(movie)}>Edit</button>
-            <button onClick={() => deleteMovie(movie.id)}>Delete</button>
+            <button onClick={(e) => deleteMovie(movie.id,e)}>
+              Delete
+            </button>
           </div>
         </>
       )}

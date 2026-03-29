@@ -9,15 +9,20 @@
 
    * ❌ Delete movies.
 
+   * 🔍 Live search (filter movies as you type)
+
    * 🏆 Grid & List toggle layouts.
 
    * 💬 Feedback messages:
-      * Add → Top notification
-      * Update/Delete → Center popup with blur background
+      *  🟢 Add → Top notification
+      *  🔵 Update → Top notification(different color)
+      *  🔴 Delete → Floating message near the deleted card
+    
+   * 🎨 Dynamic genre color badges
 
    * ⚡ Smooth hover animations and interactive buttons.
 
-   * Footer with app info.
+   * 💾 LocalStorage persistence (data saved even after refresh)
 
    * 📱 Fully responsive design for desktop and mobile
 
@@ -38,19 +43,21 @@
 ```
 
 # 🛠 Tech Stack
-  * React
-  * JSX & CSS
-  * JavaScript
-  * Git & GitHub   
+  * ⚛️ React
+  * 🧩 JSX
+  * 🎨 CSS (Flexbox + Grid + Animations)
+  * 🧠 JavaScript
+  * 💾 LocalStorage
+  * 🔧 Git & GitHub 
 
 # 🚀 Getting Started  
   
-## Prerequisites
+## 📌 Prerequisites
   
   * Node.js >= 14
   * npm or yarn installed
 
-## Installation
+## 📥 Installation
   
   ```bash
   git clone https://github.com/jasmi1901/movie-manager.git
@@ -58,12 +65,11 @@
   npm install
   npm start
   ```
- Open http://localhost:3000
+ 👉 Open http://localhost:3000
  to view it in the browser.
 
   
-
-# 🎮 Available Scripts
+  # 🎮 Available Scripts
    
   In the project directory, you can run:
 
@@ -87,12 +93,12 @@
 # 🎯 How It Works
   
   1. Add a movie using the form at the top → shows top notification.
-  2. Edit a movie → auto-scrolls to form → shows update popup.
+  2. Edit a movie → auto-scrolls to form → shows update popup.(blue)
   3. Delete a movie → triggers confirmation modal → shows center popup.
   4. Toggle layouts between grid and list views for browsing.
   
-# 🙌 Author
-   Noorae Jasmi
-
 # Live Demo
   [movie-manager](https://jasmi1901.github.io/movie-manager/)
+
+  # 🙌 Author
+    Noorae Jasmi

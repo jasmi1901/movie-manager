@@ -10,18 +10,19 @@ function App() {
   const saved = localStorage.getItem("movies");
   return saved ? JSON.parse(saved) : [];
 });
-  useEffect(() => {
-    localStorage.setItem("movies", JSON.stringify(movies));
-  }, [movies]);
+ 
   
   const [searchTerm, setSearchTerm] = useState("");
   const [editingMovie, setEditingMovie] = useState(null);
-  const [topMessage, setTopMessage] = useState("");
+  const [topMessage, setTopMessage] = useState(null);
   const [floatingMessage, setFloatingMessage] = useState(null);
   const [layout, setLayout] = useState("grid");
   
   const formRef = useRef(null);
   
+  useEffect(() => {
+    localStorage.setItem("movies", JSON.stringify(movies));
+  }, [movies]);
 
  const filteredMovies = movies.filter((movie) =>
   movie.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -73,17 +74,14 @@ function App() {
 
    showTopMessage(
       `✏️ "${updatedMovie.title}" updated`,
-      "update",
-    window.innerWidth / 2,
-    window.innerHeight / 2
-    );
+      "update");
   
 };
   
-const showTopMessage = (text) => {
-  setTopMessage(text);
+const showTopMessage = (text, type = "add") => {
+  setTopMessage({ text, type });
   setTimeout(() => {
-    setTopMessage("");
+    setTopMessage(null);
   }, 2000);
 };
 
@@ -99,6 +97,7 @@ const showFloatingMessage = (text, type, x, y) => {
   return (
     <div className="container">
       <Header />
+    
     <div className="top-controls">
     <input
       type="text"
@@ -124,8 +123,8 @@ const showFloatingMessage = (text, type, x, y) => {
 
     
 {topMessage && (
-  <div className="top-message">
-    {topMessage}
+  <div className={`top-message ${topMessage.type}`}>
+    {topMessage.text}
   </div>
 )}
 

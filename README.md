@@ -29,6 +29,7 @@
 # Folder Structure
 
 ```bash
+
    src/
 ├── components/
 │   ├── Header.jsx
@@ -100,5 +101,6 @@
 # Live Demo
   [movie-manager](https://jasmi1901.github.io/movie-manager/)
 
-  # 🙌 Author
+  # Author
+    
     Noorae Jasmi

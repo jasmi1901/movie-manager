@@ -19,7 +19,7 @@ const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
     };
 
 
-  // 🟡 Fill form when editing
+  //  Fill form when editing
   useEffect(() => {
     if (editingMovie) {
       setTitle(editingMovie.title);
@@ -29,7 +29,7 @@ const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
     }
   }, [editingMovie]);
 
-  // 🟡 Auto fetch poster from OMDB
+  //  Auto fetch poster from OMDB
   useEffect(() => {
     if (!title) return;
 
@@ -62,7 +62,7 @@ const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
     return () => clearTimeout(delay);
   }, [title, year]);
 
-  // 🟢 Submit form
+  //  Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
 

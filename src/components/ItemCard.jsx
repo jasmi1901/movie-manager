@@ -13,22 +13,36 @@ const genreColors = {
   Musical: "#ff5722",
 };
 
+function ItemCard({
+  movie,
+  deleteMovie,
+  startEdit,
+  layout,
+  addFromApi,
+}) {
+  // Detect if movie is from API (no id yet)
+  const isApiMovie = !movie.id;
 
+  // Normalize data (API vs local)
+  const title = movie.title || movie.Title;
+  const year = movie.year || movie.Year;
+  const genre = movie.genre || movie.Type || "Unknown";
+  const image =
+    movie.image ||
+    movie.Poster ||
+    "https://via.placeholder.com/220x300?text=No+Image";
 
-function ItemCard({ movie, deleteMovie, startEdit, layout }) {
-  
-  const badgeColor = genreColors[movie.genre] || "#333";
-  
+  const badgeColor = genreColors[genre] || "#333";
+
   return (
     <div className={`card ${layout === "list" ? "list-card" : ""}`}>
       
       {/* LIST VIEW */}
       {layout === "list" ? (
         <div className="list-card-inner">
-          
           <img
-            src={movie.image || "https://via.placeholder.com/120x160?text=No+Image"}
-            alt={movie.title}
+            src={image}
+            alt={title}
             style={{
               width: "120px",
               height: "160px",
@@ -39,24 +53,34 @@ function ItemCard({ movie, deleteMovie, startEdit, layout }) {
           />
 
           <div className="list-card-info">
-            <h3>{movie.title}</h3>
+            <h3>{title}</h3>
 
             <p>
               <span
                 className="genre-badge"
                 style={{ backgroundColor: badgeColor }}
               >
-                {movie.genre}
+                {genre}
               </span>
             </p>
 
-            <p>Year: {movie.year}</p>
+            <p>Year: {year}</p>
 
             <div className="buttons">
-              <button onClick={() => startEdit(movie)}>Edit</button>
-              <button onClick={(e) => deleteMovie(movie.id,e)}>
-                Delete
-              </button>
+              {isApiMovie ? (
+                <button onClick={() => addFromApi(movie)}>
+                  ➕ Add
+                </button>
+              ) : (
+                <>
+                  <button onClick={() => startEdit(movie)}>
+                    Edit
+                  </button>
+                  <button onClick={(e) => deleteMovie(movie.id, e)}>
+                    Delete
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -64,8 +88,8 @@ function ItemCard({ movie, deleteMovie, startEdit, layout }) {
         <>
           {/* GRID VIEW */}
           <img
-            src={movie.image || "https://via.placeholder.com/220x300?text=No+Image"}
-            alt={movie.title}
+            src={image}
+            alt={title}
             style={{
               width: "100%",
               borderRadius: "10px",
@@ -74,24 +98,34 @@ function ItemCard({ movie, deleteMovie, startEdit, layout }) {
             }}
           />
 
-          <h3>{movie.title}</h3>
+          <h3>{title}</h3>
 
           <p>
             <span
               className="genre-badge"
               style={{ backgroundColor: badgeColor }}
             >
-              {movie.genre}
+              {genre}
             </span>
           </p>
 
-          <p>Year: {movie.year}</p>
+          <p>Year: {year}</p>
 
           <div className="buttons">
-            <button onClick={() => startEdit(movie)}>Edit</button>
-            <button onClick={(e) => deleteMovie(movie.id,e)}>
-              Delete
-            </button>
+            {isApiMovie ? (
+              <button onClick={() => addFromApi(movie)}>
+                ➕ Add
+              </button>
+            ) : (
+              <>
+                <button onClick={() => startEdit(movie)}>
+                  Edit
+                </button>
+                <button onClick={(e) => deleteMovie(movie.id, e)}>
+                  Delete
+                </button>
+              </>
+            )}
           </div>
         </>
       )}

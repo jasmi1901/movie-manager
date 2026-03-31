@@ -26,7 +26,9 @@ function App() {
 
  const filteredMovies = movies.filter((movie) =>
   movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
+  .sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+);
   
   const addMovie = (movie) => {
     const newMovie = { ...movie, id: Date.now() };
@@ -76,6 +78,10 @@ function App() {
       `✏️ "${updatedMovie.title}" updated`,
       "update");
   
+};
+
+const cancelEdit = () => {
+  setEditingMovie(null);
 };
   
 const showTopMessage = (text, type = "add") => {
@@ -147,6 +153,7 @@ const showFloatingMessage = (text, type, x, y) => {
         addMovie={addMovie}
         editingMovie={editingMovie}
         updateMovie={updateMovie}
+        cancelEdit={cancelEdit}
       />
 
       <ItemList

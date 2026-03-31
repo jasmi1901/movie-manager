@@ -7,9 +7,16 @@ const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
   const [image, setImage] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-
+  const resetForm = () => {
+      setTitle("");
+      setGenre("");
+      setYear("");
+      setImage("");
+      setError("");
+    };
 
 
   // 🟡 Fill form when editing
@@ -59,10 +66,12 @@ const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !genre || !year) {
-      alert("Please fill all fields");
+    if (!title.trim() || !genre || !year.trim()) {
+      setError("⚠️ All fields are required");
       return;
     }
+    
+    setError("");
 
     const movieData = { title, genre, year, image };
 
@@ -72,16 +81,15 @@ const ItemForm = forwardRef(({ addMovie, editingMovie, updateMovie }, ref) => {
       addMovie(movieData);
     }
 
-    // reset form
-    setTitle("");
-    setGenre("");
-    setYear("");
-    setImage("");
+    resetForm();
+    
   };
 
   return (
     <form ref={ref} onSubmit={handleSubmit} className="form">
-      
+
+     {error && <div className="error">{error}</div>}
+
       <input
         type="text"
         placeholder="Movie Title"

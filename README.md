@@ -1,4 +1,4 @@
-# 🎬Movie Manager React App
+# 🎬 Movie Manager React App
  
  Manage your favorite movies with ease! Add, edit, and delete movies dynamically. This app is built using React and demonstrates core React concepts like state management, props, and component-based architecture.
 
@@ -60,10 +60,10 @@
 ## 📥 Installation
   
   ```bash
-  git clone https://github.com/jasmi1901/movie-manager.git
-  cd movie-manager
-  npm install
-  npm start
+    git clone https://github.com/jasmi1901/movie-manager.git
+    cd movie-manager
+    npm install
+    npm start
   ```
  👉 Open http://localhost:3000
  to view it in the browser.

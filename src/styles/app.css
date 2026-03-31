@@ -125,6 +125,15 @@ header p {
   box-shadow: 0 0 15px rgba(255, 106, 0, 0.7);
 }
 
+.error {
+  background: #da2222;
+  color: #ece6e6;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #a4bb0a;
+  font-weight: 500;
+}
 
 .list {
   animation: fadeSwitch 0.4s ease;

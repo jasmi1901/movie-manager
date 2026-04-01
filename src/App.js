@@ -73,11 +73,11 @@ function App() {
   // Add movie
   const addMovie = (movie) => {
     const exists = movies.some(
-    (m) => m.title.toLowerCase() === movie.title.toLowerCase()
+    (m) => m.title.trim().toLowerCase() === movie.title.trim().toLowerCase() &&
+      String(m.year) === String(movie.year)
   );
-
   if (exists) {
-    showTopMessage(`⚠️ "${movie.title}" already exists!`, "error");
+    showTopMessage(`⚠️ "${movie.title} (${movie.year})" already exists!`, "error");
     return;
   }
     const newMovie = { ...movie, id: Date.now() };

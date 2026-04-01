@@ -101,6 +101,4 @@
 # Live Demo
   [movie-manager](https://jasmi1901.github.io/movie-manager/)
 
-  # Author
-    
-    Noorae Jasmi
+  

@@ -72,6 +72,14 @@ function App() {
 
   // Add movie
   const addMovie = (movie) => {
+    const exists = movies.some(
+    (m) => m.title.toLowerCase() === movie.title.toLowerCase()
+  );
+
+  if (exists) {
+    showTopMessage(`⚠️ "${movie.title}" already exists!`, "error");
+    return;
+  }
     const newMovie = { ...movie, id: Date.now() };
     setMovies([...movies, newMovie]);
     showTopMessage(`✅ "${movie.title}" added successfully!`, "add");
